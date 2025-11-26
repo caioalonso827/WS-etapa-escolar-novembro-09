@@ -28,4 +28,15 @@ public class AgendamentoService {
     public void deletarAgendamento (Integer idAgendamento) {
         agendamentoRepository.deleteById(idAgendamento);
 }
+
+     public void atualizarAgendamento (Integer idAgendamento, Agendamento agendamento) {
+
+        if (agendamento.getDataAgendamento() != null) {agendamento.setDataAgendamento(agendamento.getDataAgendamento());}
+        if (agendamento.getTratamento() != null) {agendamento.setTratamento(agendamento.getTratamento());}
+        if (agendamento.getMedico() != null) {agendamento.setMedico(agendamento.getMedico());}
+        if (agendamento.getIdAgendamento() != null) {agendamento.setIdAgendamento(agendamento.getIdAgendamento());} // nao pode trocar id
+        if (agendamento.getPaciente() != null) {agendamento.setPaciente(agendamento.getPaciente());}
+        
+        agendamentoRepository.saveAndFlush(agendamento);
+    }
 }

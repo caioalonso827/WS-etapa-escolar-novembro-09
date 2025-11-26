@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.senai.infoa.O.Hospital.Com.Vida.Models.Medico;
+
 import com.senai.infoa.O.Hospital.Com.Vida.Respositories.MedicoRepository;
 
 @Service
@@ -27,5 +28,15 @@ public class MedicoService {
     public void deletarMedico (Integer idMedico) {
         medicoRepository.deleteById(idMedico);
 }
+
+ public void atualizarMedico (Integer idMedico, Medico medico) {
+
+        if (medico.getNomeMedico() != null) {medico.setNomeMedico(medico.getNomeMedico());}
+        if (medico.getEmailMedico() != null) {medico.setEmailMedico(medico.getEmailMedico());}
+        if (medico.getSenhaMedico() != null) {medico.setSenhaMedico(medico.getSenhaMedico());}
+        if (medico.getIdMedico() != null) {medico.setIdMedico(idMedico);} // nao pode trocar id
+        
+        medicoRepository.saveAndFlush(medico);
+    }
 }
 

@@ -28,4 +28,14 @@ public class PacienteService {
     public void deletarPaciente (Integer idPaciente) {
         pacienteRespository.deleteById(idPaciente);
     }
+
+    public void atualizarPaciente (Integer idPaciente, Paciente paciente) {
+
+        if (paciente.getNomePaciente() != null) {paciente.setNomePaciente(paciente.getNomePaciente());}
+        if (paciente.getSenhaPaciente() != null) {paciente.setSenhaPaciente(paciente.getSenhaPaciente());}
+        if (paciente.getCpfPaciente() != null) {paciente.setCpfPaciente(paciente.getSenhaPaciente());}
+        if (paciente.getIdPaciente() != null) {paciente.setIdPaciente(idPaciente);} // nao pode trocar id
+        
+        pacienteRespository.saveAndFlush(paciente);
+    }
 }
