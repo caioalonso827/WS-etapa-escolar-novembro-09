@@ -24,25 +24,27 @@ import com.senai.infoa.O.Hospital.Com.Vida.Services.AgendamentoService;
 public class AgendamentoController {
    @Autowired
    private AgendamentoService agendamentoService;
+
+
    
     @PostMapping("/Cadastrar")
-    public Agendamento cadastrarAgendamento (@RequestBody Agendamento agendamento) {
-
-      //  Tratamento tratamento = new Tratamento();
-     //   tratamento.setIdTratamento(agendamento.getTratamento().getIdTratamento());
-      //  agendamento.setTratamento(tratamento);
-        //Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
+    public ResponseEntity<Void> cadastrarAgendamento (@RequestBody Agendamento agendamento) {
 
         Medico medico = new Medico();
         medico.setIdMedico(agendamento.getMedico().getIdMedico());
-        agendamento.setMedico(medico);//Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
+        agendamento.setMedico(medico);
 
         Paciente paciente = new Paciente();
         paciente.setIdPaciente(agendamento.getPaciente().getIdPaciente());
         agendamento.setPaciente(paciente);
-        //Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
-        return agendamentoService.cadastrarAgendamento(agendamento);
+        Tratamento tratamento = new Tratamento();
+        tratamento.setIdTratamento(agendamento.getTratamento().getIdTratamento());
+        agendamento.setTratamento(tratamento);
+
+
+        agendamentoService.cadastrarAgendamento(agendamento);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/ListarAgendamentosDoPaciente")

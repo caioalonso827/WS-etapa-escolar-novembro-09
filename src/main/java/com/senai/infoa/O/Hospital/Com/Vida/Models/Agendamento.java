@@ -27,9 +27,9 @@ public class Agendamento {
     @Column(name="hora_agendamento")
     private LocalTime horaAgendamento;
 
-    //@OneToOne
-    //@JoinColumn (name="tratamento_id")
-    //private Tratamento tratamento;
+    @OneToOne
+    @JoinColumn (name="tratamento_id")
+    private Tratamento tratamento;
 
     @OneToOne
     @JoinColumn(name="paciente_id")
@@ -52,7 +52,7 @@ public class Agendamento {
     
     public Agendamento(Integer idAgendamento, Tratamento tratamento, Paciente paciente, Medico medico, LocalDate dataCriacao) {
         this.idAgendamento = idAgendamento;
-       // this.tratamento = tratamento;
+       this.tratamento = tratamento;
         this.paciente = paciente;
         this.medico = medico;
         this.dataCriacao = dataCriacao;
@@ -101,15 +101,15 @@ public class Agendamento {
 
 
 
-   // public Tratamento getTratamento() {
-    //    return tratamento;
-    //}
+   public Tratamento getTratamento() {
+       return tratamento;
+    }
 
 
 
-  //  public void setTratamento(Tratamento tratamento) {
-  //      this.tratamento = tratamento;
-  //  }
+   public void setTratamento(Tratamento tratamento) {
+        this.tratamento = tratamento;
+    }
 
 
 

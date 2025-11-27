@@ -15,7 +15,7 @@ public class AgendamentoService {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    public Agendamento cadastrarAgendamento (Agendamento agendamento) {
+    public void cadastrarAgendamento (Agendamento agendamento) {
 
         Paciente paciente = agendamento.getPaciente();
         if (paciente.getDisponivel() != true) {throw  new RuntimeException("Esse paciente não está ativo");} //Não deixar paciente inativo fazer agendamento
@@ -29,7 +29,7 @@ public class AgendamentoService {
         int qtd = agendamentoRepository.qtdAgendamento(agendamento.getMedico().getIdMedico(), agendamento.getDataAgendamento());
         if (qtd > 20) {throw new RuntimeException("Esse médico atigiu seu limite nesse dia");}
 
-        return agendamentoRepository.saveAndFlush(agendamento);
+        agendamentoRepository.saveAndFlush(agendamento);
     }
 
     public List<Agendamento> listarAgendamentoDoPaciente (Integer idPaciente) {
@@ -62,7 +62,7 @@ public class AgendamentoService {
         
 
         if (agendamento.getDataAgendamento() != null) {agendamento.setDataAgendamento(agendamento.getDataAgendamento());}
-       // if (agendamento.getTratamento() != null) {agendamento.setTratamento(agendamento.getTratamento());}
+       if (agendamento.getTratamento() != null) {agendamento.setTratamento(agendamento.getTratamento());}
         if (agendamento.getMedico() != null) {agendamento.setMedico(agendamento.getMedico());}
         if (agendamento.getIdAgendamento() != null) {agendamento.setIdAgendamento(agendamento.getIdAgendamento());} // nao pode trocar id
         if (agendamento.getPaciente() != null) {agendamento.setPaciente(agendamento.getPaciente());}
