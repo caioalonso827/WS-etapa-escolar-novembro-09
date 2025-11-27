@@ -31,15 +31,15 @@ public class AgendamentoController {
 
         Tratamento tratamento = new Tratamento();
         tratamento.setIdTratamento(tratamento.getAgendamento().getIdAgendamento());
-        tratamento.setAgendamento(agendamento); //Só precisa colocar o id, que já puxa as informaçoes
+        tratamento.setAgendamento(agendamento); //Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
         Medico medico = new Medico();
         medico.setIdMedico(medico.getAgendamento().getIdAgendamento());
-        medico.setAgendamento(agendamento);//Só precisa colocar o id, que já puxa as informaçoes
+        medico.setAgendamento(agendamento);//Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
         Paciente paciente = new Paciente();
         paciente.setIdPaciente(paciente.getAgendamento().getIdAgendamento());
-        paciente.setAgendamento(agendamento);//Só precisa colocar o id, que já puxa as informaçoes
+        paciente.setAgendamento(agendamento);//Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
         
 

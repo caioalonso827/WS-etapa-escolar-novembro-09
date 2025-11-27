@@ -27,7 +27,7 @@ public class AgendamentoService {
         
         
         //int medico = agendamentoRepository.agendarMesmaData(agendamento.getMedico().getIdMedico(), agendamento.getDataAgendamento());
-        //if (medico > 0) {throw new RuntimeException("Já tem agendamento nessas data para esse médico");} //Mão pode agendar na mesma data para o mesmo medico.
+        //if (medico > 0) {throw new RuntimeException("Já tem agendamento nessas data para esse médico");} //Não pode agendar na mesma data para o mesmo medico. (RESOLVER)
 
         agendamentoRepository.saveAndFlush(agendamento);
     }
