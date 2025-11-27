@@ -43,6 +43,7 @@ public class PacienteService {
         if (paciente.getSenhaPaciente() != null) {paciente.setSenhaPaciente(paciente.getSenhaPaciente());}
         if (paciente.getCpfPaciente() != null) {paciente.setCpfPaciente(paciente.getSenhaPaciente());}
         if (paciente.getIdPaciente() != null) {paciente.setIdPaciente(idPaciente);} // nao pode trocar id
+        if (paciente.getDisponivel() != true) {paciente.setDisponivel(paciente.getDisponivel());}
         
         pacienteRespository.saveAndFlush(paciente);
     }

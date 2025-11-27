@@ -44,6 +44,7 @@ public class MedicoService {
         if (medico.getEmailMedico() != null) {medico.setEmailMedico(medico.getEmailMedico());}
         if (medico.getSenhaMedico() != null) {medico.setSenhaMedico(medico.getSenhaMedico());}
         if (medico.getIdMedico() != null) {medico.setIdMedico(idMedico);} // nao pode trocar id
+        if (medico.getAtivo() != true) {medico.setAtivo(medico.getAtivo());}
         
         medicoRepository.saveAndFlush(medico);
     }

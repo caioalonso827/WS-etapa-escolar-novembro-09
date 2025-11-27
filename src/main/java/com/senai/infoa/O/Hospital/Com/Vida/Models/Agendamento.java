@@ -2,7 +2,6 @@ package com.senai.infoa.O.Hospital.Com.Vida.Models;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -19,7 +18,7 @@ import jakarta.persistence.Table;
 public class Agendamento {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id_agendamento")
+    @Column(name="id_agendamento",unique=true)
     private Integer idAgendamento;
 
     @Column(name="data_agendamento")
@@ -28,9 +27,9 @@ public class Agendamento {
     @Column(name="hora_agendamento")
     private LocalTime horaAgendamento;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn (name="tratamento_id")
-    private List<Tratamento> tratamento;
+    private Tratamento tratamento;
 
     @OneToOne
     @JoinColumn(name="paciente_id")
@@ -51,7 +50,7 @@ public class Agendamento {
     }
 
     
-    public Agendamento(Integer idAgendamento, List<Tratamento> tratamento, Paciente paciente, Medico medico, LocalDate dataCriacao) {
+    public Agendamento(Integer idAgendamento, Tratamento tratamento, Paciente paciente, Medico medico, LocalDate dataCriacao) {
         this.idAgendamento = idAgendamento;
         this.tratamento = tratamento;
         this.paciente = paciente;
@@ -102,13 +101,13 @@ public class Agendamento {
 
 
 
-    public List<Tratamento> getTratamento() {
+    public Tratamento getTratamento() {
         return tratamento;
     }
 
 
 
-    public void setTratamento(List<Tratamento> tratamento) {
+    public void setTratamento(Tratamento tratamento) {
         this.tratamento = tratamento;
     }
 

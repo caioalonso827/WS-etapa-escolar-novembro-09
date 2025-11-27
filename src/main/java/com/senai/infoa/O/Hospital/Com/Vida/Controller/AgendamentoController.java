@@ -17,7 +17,6 @@ import com.senai.infoa.O.Hospital.Com.Vida.Models.Agendamento;
 import com.senai.infoa.O.Hospital.Com.Vida.Models.Medico;
 import com.senai.infoa.O.Hospital.Com.Vida.Models.Paciente;
 import com.senai.infoa.O.Hospital.Com.Vida.Models.Tratamento;
-import com.senai.infoa.O.Hospital.Com.Vida.Respositories.AgendamentoRepository;
 import com.senai.infoa.O.Hospital.Com.Vida.Services.AgendamentoService;
 
 @RestController
@@ -30,9 +29,10 @@ public class AgendamentoController {
     public ResponseEntity<String> cadastrarAgendamento (@RequestBody Agendamento agendamento) {
 
 
-        //Tratamento tratamento = new Tratamento();
-        //tratamento.setIdTratamento(agendamento.getTratamento());
-        //agendamento.setTratamento(tratamento);
+        Tratamento tratamento = new Tratamento();
+        tratamento.setIdTratamento(agendamento.getTratamento().getIdTratamento());
+        agendamento.setTratamento(tratamento);
+        
         //Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
         Medico medico = new Medico();
