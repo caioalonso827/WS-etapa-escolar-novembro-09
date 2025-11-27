@@ -1,6 +1,7 @@
 package com.senai.infoa.O.Hospital.Com.Vida.Models;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -24,6 +25,9 @@ public class Agendamento {
     @Column(name="data_agendamento")
     private LocalDate dataAgendamento;
 
+    @Column(name="hora_agendamento")
+    private LocalTime horaAgendamento;
+
     @OneToMany
     @JoinColumn (name="tratamento_id")
     private List<Tratamento> tratamento;
@@ -42,7 +46,7 @@ public class Agendamento {
     private Boolean ativo = true;
 
 
-    
+
     public Agendamento() {
     }
 
@@ -63,6 +67,10 @@ public class Agendamento {
 
     public Agendamento(LocalDate dataAgendamento) {
         this.dataAgendamento = dataAgendamento;
+    }
+
+    public Agendamento(LocalTime horaAgendamento) {
+        this.horaAgendamento = horaAgendamento;
     }
 
 
@@ -134,6 +142,16 @@ public class Agendamento {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+
+
+    public LocalTime getHoraAgendamento() {
+        return horaAgendamento;
+    }
+
+
+    public void setHoraAgendamento(LocalTime horaAgendamento) {
+        this.horaAgendamento = horaAgendamento;
     }
 
     

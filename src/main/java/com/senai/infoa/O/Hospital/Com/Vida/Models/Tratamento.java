@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
 public class Tratamento {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id_tratamento")
+    @Column(name="id_tratamento",unique=true)
     private Integer idTratamento;
 
     @Column(name="data_criacao")
@@ -30,7 +30,7 @@ public class Tratamento {
     private String descricaoTratamento;
 
     @Column(name="custo_tratamento")
-    private String custoTratamento;
+    private Integer custoTratamento;
 
     @Column(name="categoria_tratamento")
     private String categoriaTratamento;
@@ -45,7 +45,7 @@ public class Tratamento {
     public Tratamento() {
     }
 
-    public Tratamento(Integer idTratamento, String nomeMedico, String descricaoTratamento, String custoTratamento,
+    public Tratamento(Integer idTratamento, String nomeMedico, String descricaoTratamento, Integer custoTratamento,
             String categoriaTratamento, Agendamento agendamento, LocalDate dataCriacao) {
         this.idTratamento = idTratamento;
         this.nomeMedico = nomeMedico;
@@ -80,13 +80,11 @@ public class Tratamento {
         this.descricaoTratamento = descricaoTratamento;
     }
 
-    public String getCustoTratamento() {
+    public Integer getCustoTratamento() {
         return custoTratamento;
     }
 
-    public void setCustoTratamento(String custoTratamento) {
-        this.custoTratamento = custoTratamento;
-    }
+   
 
     public String getCategoriaTratamento() {
         return categoriaTratamento;
@@ -118,6 +116,10 @@ public class Tratamento {
 
     public void setDisponivel(Boolean disponivel) {
         this.disponivel = disponivel;
+    }
+
+    public void setCustoTratamento(Integer custoTratamento) {
+        this.custoTratamento = custoTratamento;
     }
 
     

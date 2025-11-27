@@ -15,6 +15,10 @@ public class TratamentoService {
     private TratamentoRepository tratamentoRepository;
     
     public void cadastrarTratamento (Tratamento tratamento) {
+
+        int custoTratamento = tratamento.getCustoTratamento();
+        if (custoTratamento < 0) {throw new RuntimeException("Não pode tratamento desse valor");} //Não poder tratamento com custo menor que 0.
+
         tratamentoRepository.saveAndFlush(tratamento);
     }
 

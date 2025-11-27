@@ -39,6 +39,7 @@ public class MedicoService {
 
  public void atualizarMedico (Integer idMedico, Medico medico) {
 
+
         if (medico.getNomeMedico() != null) {medico.setNomeMedico(medico.getNomeMedico());}
         if (medico.getEmailMedico() != null) {medico.setEmailMedico(medico.getEmailMedico());}
         if (medico.getSenhaMedico() != null) {medico.setSenhaMedico(medico.getSenhaMedico());}

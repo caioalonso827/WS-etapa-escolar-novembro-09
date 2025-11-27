@@ -23,11 +23,11 @@ public class AgendamentoService {
         Medico med = agendamento.getMedico();
         if (med.getAtivo() != true) {throw new RuntimeException("Esse médico está desativado");} // Não deixar medico desativado receber agendamento
         
+        int medico = agendamentoRepository.agendarMesmaData(agendamento.getMedico().getIdMedico(), agendamento.getHoraAgendamento());
+        if (medico > 0) {throw new RuntimeException("Já tem agendamento nesse horario para esse medico");} //Não pode agendar no mesmo horario para o mesmo medico. (RESOLVER)
 
-        
-        
-        //int medico = agendamentoRepository.agendarMesmaData(agendamento.getMedico().getIdMedico(), agendamento.getDataAgendamento());
-        //if (medico > 0) {throw new RuntimeException("Já tem agendamento nessas data para esse médico");} //Não pode agendar na mesma data para o mesmo medico. (RESOLVER)
+        int qtd = agendamentoRepository.qtdAgendamento(agendamento.getMedico().getIdMedico(), agendamento.getDataAgendamento());
+        if (qtd > 20) {throw new RuntimeException("Esse médico atigiu seu limite nesse dia");}
 
         agendamentoRepository.saveAndFlush(agendamento);
     }
@@ -59,11 +59,14 @@ public class AgendamentoService {
 
      public void atualizarAgendamento (Integer idAgendamento, Agendamento agendamento) {
 
+        
+
         if (agendamento.getDataAgendamento() != null) {agendamento.setDataAgendamento(agendamento.getDataAgendamento());}
         if (agendamento.getTratamento() != null) {agendamento.setTratamento(agendamento.getTratamento());}
         if (agendamento.getMedico() != null) {agendamento.setMedico(agendamento.getMedico());}
         if (agendamento.getIdAgendamento() != null) {agendamento.setIdAgendamento(agendamento.getIdAgendamento());} // nao pode trocar id
         if (agendamento.getPaciente() != null) {agendamento.setPaciente(agendamento.getPaciente());}
+        if (agendamento.getAtivo() != null) {agendamento.setAtivo(agendamento.getAtivo());}
         
         agendamentoRepository.saveAndFlush(agendamento);
     }

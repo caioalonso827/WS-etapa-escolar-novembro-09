@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,7 +25,9 @@ public class Paciente {
     @Column(name="data_criacao")
     private LocalDate dataCriacao;
 
+
     @Column(name="nome_paciente")
+    @Nonnull
     private String nomePaciente;
 
     @Column(name="cpf_paciente")

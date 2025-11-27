@@ -17,6 +17,7 @@ import com.senai.infoa.O.Hospital.Com.Vida.Models.Agendamento;
 import com.senai.infoa.O.Hospital.Com.Vida.Models.Medico;
 import com.senai.infoa.O.Hospital.Com.Vida.Models.Paciente;
 import com.senai.infoa.O.Hospital.Com.Vida.Models.Tratamento;
+import com.senai.infoa.O.Hospital.Com.Vida.Respositories.AgendamentoRepository;
 import com.senai.infoa.O.Hospital.Com.Vida.Services.AgendamentoService;
 
 @RestController
@@ -29,17 +30,19 @@ public class AgendamentoController {
     public ResponseEntity<String> cadastrarAgendamento (@RequestBody Agendamento agendamento) {
 
 
-        Tratamento tratamento = new Tratamento();
-        tratamento.setIdTratamento(tratamento.getAgendamento().getIdAgendamento());
-        tratamento.setAgendamento(agendamento); //Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
+        //Tratamento tratamento = new Tratamento();
+        //tratamento.setIdTratamento(agendamento.getTratamento());
+        //agendamento.setTratamento(tratamento);
+        //Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
         Medico medico = new Medico();
-        medico.setIdMedico(medico.getAgendamento().getIdAgendamento());
-        medico.setAgendamento(agendamento);//Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
+        medico.setIdMedico(agendamento.getMedico().getIdMedico());
+        agendamento.setMedico(medico);//Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
         Paciente paciente = new Paciente();
-        paciente.setIdPaciente(paciente.getAgendamento().getIdAgendamento());
-        paciente.setAgendamento(agendamento);//Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
+        paciente.setIdPaciente(agendamento.getPaciente().getIdPaciente());
+        agendamento.setPaciente(paciente);
+        //Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
         
 
