@@ -28,9 +28,9 @@ public class AgendamentoController {
     @PostMapping("/Cadastrar")
     public Agendamento cadastrarAgendamento (@RequestBody Agendamento agendamento) {
 
-        Tratamento tratamento = new Tratamento();
-        tratamento.setIdTratamento(agendamento.getTratamento().getIdTratamento());
-        agendamento.setTratamento(tratamento);
+      //  Tratamento tratamento = new Tratamento();
+     //   tratamento.setIdTratamento(agendamento.getTratamento().getIdTratamento());
+      //  agendamento.setTratamento(tratamento);
         //Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
         Medico medico = new Medico();
