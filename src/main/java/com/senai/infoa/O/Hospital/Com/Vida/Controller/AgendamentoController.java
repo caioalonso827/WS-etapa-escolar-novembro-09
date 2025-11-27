@@ -28,6 +28,7 @@ public class AgendamentoController {
     @PostMapping("/Cadastrar")
     public ResponseEntity<String> cadastrarAgendamento (@RequestBody Agendamento agendamento) {
 
+
         Tratamento tratamento = new Tratamento();
         tratamento.setIdTratamento(tratamento.getAgendamento().getIdAgendamento());
         tratamento.setAgendamento(agendamento); //Só precisa colocar o id, que já puxa as informaçoes
@@ -39,6 +40,8 @@ public class AgendamentoController {
         Paciente paciente = new Paciente();
         paciente.setIdPaciente(paciente.getAgendamento().getIdAgendamento());
         paciente.setAgendamento(agendamento);//Só precisa colocar o id, que já puxa as informaçoes
+
+        
 
         agendamentoService.cadastrarAgendamento(agendamento);
         return ResponseEntity.ok("Agendamento Feito!!");
@@ -57,8 +60,8 @@ public class AgendamentoController {
 
     @DeleteMapping("/Deletar")
     public ResponseEntity<String> deletarAgendamento (@RequestParam Integer idAgendamento) {
-        agendamentoService.deletarAgendamento(idAgendamento);
-        return ResponseEntity.ok("Medico Deletado!!");
+        agendamentoService.desativarAgendamento(idAgendamento);
+        return ResponseEntity.ok("Medico Desativado!!");
     }
 
      @PutMapping("/Atualizar")

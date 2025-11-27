@@ -26,7 +26,11 @@ public class MedicoService {
     }
 
     public void deletarMedico (Integer idMedico) {
-        medicoRepository.deleteById(idMedico);
+
+        Medico medico = medicoRepository.findById(idMedico).orElseThrow(()-> new RuntimeException("Não existe esse medico"));
+
+        medico.setAtivo(false);
+        medicoRepository.saveAndFlush(medico);
 }
 
  public void atualizarMedico (Integer idMedico, Medico medico) {

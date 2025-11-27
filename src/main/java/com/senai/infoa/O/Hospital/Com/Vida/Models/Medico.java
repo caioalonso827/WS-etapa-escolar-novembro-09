@@ -43,6 +43,8 @@ public class Medico {
     @OneToOne (mappedBy="medico",cascade=CascadeType.ALL)
     private Agendamento agendamento;
 
+    private Boolean ativo = true;
+
     public Medico() {
     }
 
@@ -129,6 +131,14 @@ public class Medico {
 
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 
     

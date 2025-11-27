@@ -39,6 +39,8 @@ public class Agendamento {
     @Column(name="data_criacao")
     private LocalDate dataCriacao;
 
+    private Boolean ativo = true;
+
     public Agendamento() {
     }
 
@@ -120,6 +122,16 @@ public class Agendamento {
 
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 
     

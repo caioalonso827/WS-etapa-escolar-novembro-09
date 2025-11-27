@@ -33,6 +33,8 @@ public class Tratamento {
     @Column(name="categoria_tratamento")
     private String categoriaTratamento;
 
+    private Boolean disponivel = true;
+
 
     @ManyToOne
     private Agendamento agendamento;
@@ -105,6 +107,14 @@ public class Tratamento {
 
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public Boolean getDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(Boolean disponivel) {
+        this.disponivel = disponivel;
     }
 
     

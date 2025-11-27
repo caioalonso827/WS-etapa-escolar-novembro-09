@@ -26,7 +26,10 @@ public class PacienteService {
     }
 
     public void deletarPaciente (Integer idPaciente) {
-        pacienteRespository.deleteById(idPaciente);
+        Paciente paciente = pacienteRespository.findById(idPaciente).orElseThrow(()-> new RuntimeException("Não existe esse paciente"));
+
+        paciente.setDisponivel(false);
+        pacienteRespository.saveAndFlush(paciente);
     }
 
     public void atualizarPaciente (Integer idPaciente, Paciente paciente) {

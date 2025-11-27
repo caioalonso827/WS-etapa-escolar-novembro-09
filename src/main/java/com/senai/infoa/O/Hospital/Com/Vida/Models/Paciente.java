@@ -34,6 +34,8 @@ public class Paciente {
     @Column(name="senha_paciente")
     private String senhaPaciente;
 
+    private Boolean disponivel = true;
+
     @OneToOne(mappedBy="paciente",cascade=CascadeType.ALL)
     private Agendamento agendamento;
 
@@ -50,6 +52,8 @@ public class Paciente {
         this.agendamento = agendamento;
         this.dataCriacao = dataCriacao;
     }
+
+
 
     public Integer getIdPaciente() {
         return idPaciente;
@@ -105,6 +109,14 @@ public class Paciente {
 
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public Boolean getDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(Boolean disponivel) {
+        this.disponivel = disponivel;
     }
 
     

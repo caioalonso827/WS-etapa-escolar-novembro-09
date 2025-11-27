@@ -21,6 +21,9 @@ public class TratamentoService {
     }
 
     public void deletarTratamento (Integer idTratamento) {
-        tratamentoRepository.deleteById(idTratamento);
+        Tratamento tratamento = tratamentoRepository.findById(idTratamento).orElseThrow(()-> new RuntimeException("Não existe esse tratamento"));
+
+        tratamento.setDisponivel(false);
+        tratamentoRepository.saveAndFlush(tratamento);
     }
 }
