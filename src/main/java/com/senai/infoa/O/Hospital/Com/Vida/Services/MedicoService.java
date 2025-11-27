@@ -25,6 +25,10 @@ public class MedicoService {
         return medicoRepository.findAll();
     }
 
+    public Medico listarMedicoPorId (Integer idMedico) {
+        return medicoRepository.findById(idMedico).orElseThrow(()-> new RuntimeException("Não existe esse medico"));
+    }
+
     public void deletarMedico (Integer idMedico) {
 
         Medico medico = medicoRepository.findById(idMedico).orElseThrow(()-> new RuntimeException("Não existe esse medico"));

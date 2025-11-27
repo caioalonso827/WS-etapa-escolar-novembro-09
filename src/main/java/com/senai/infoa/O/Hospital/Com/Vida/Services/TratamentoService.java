@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
 import com.senai.infoa.O.Hospital.Com.Vida.Models.Tratamento;
 import com.senai.infoa.O.Hospital.Com.Vida.Respositories.TratamentoRepository;
 
@@ -18,6 +20,10 @@ public class TratamentoService {
 
     public List<Tratamento> listarTodosTratamentos () {
         return tratamentoRepository.findAll();
+    }
+
+    public Tratamento listarTratamentoPorId (Integer idTratamento) {
+        return tratamentoRepository.findById(idTratamento).orElseThrow(()-> new RuntimeException("Não existe esse tratamento"));
     }
 
     public void deletarTratamento (Integer idTratamento) {

@@ -40,6 +40,14 @@ public class AgendamentoService {
         return agendamentoRepository.listarAgendamentosDoMedico(idMedico);
     }
 
+    public List<Agendamento> listarTodosOsAgendamento () {
+        return agendamentoRepository.findAll();
+    }
+
+    public Agendamento listarAgendamentoPorId (Integer idAgendamento) {
+        return agendamentoRepository.findById(idAgendamento).orElseThrow(()-> new RuntimeException("Não existe esse agendamento"));
+    }
+
     public void desativarAgendamento (Integer idAgendamento) {
 
         Agendamento agendamento = agendamentoRepository.findById(idAgendamento).orElseThrow(()-> new RuntimeException("Não existe esse agendamento"));

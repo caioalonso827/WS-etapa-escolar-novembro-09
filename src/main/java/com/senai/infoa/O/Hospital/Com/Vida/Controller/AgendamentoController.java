@@ -57,6 +57,11 @@ public class AgendamentoController {
         return agendamentoService.listarAgendamentoDoMedico(idMedico);
     }
 
+    @GetMapping("/ListarTodosAgendamentos")
+    public List<Agendamento> listarTodosOsAgendamentos () {
+        return agendamentoService.listarTodosOsAgendamento();
+    }
+
 
     @DeleteMapping("/Deletar")
     public ResponseEntity<String> deletarAgendamento (@RequestParam Integer idAgendamento) {

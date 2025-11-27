@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.senai.infoa.O.Hospital.Com.Vida.Models.Tratamento;
 import com.senai.infoa.O.Hospital.Com.Vida.Services.TratamentoService;
 
@@ -30,6 +31,11 @@ public class TratamentoController {
     @GetMapping("/Listar")
     public List<Tratamento> listarTodosTratamentos () {
         return tratamentoService.listarTodosTratamentos();
+    }
+
+    @GetMapping("/ListarPorId")
+    public Tratamento listarTratamentoPorId (@RequestParam Integer idTratamento) {
+        return tratamentoService.listarTratamentoPorId(idTratamento);
     }
 
     @DeleteMapping("/Deletar")

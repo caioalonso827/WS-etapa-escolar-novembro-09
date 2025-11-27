@@ -37,6 +37,11 @@ public class MedicoController {
         return medicoService.listarTodosMedicos();
     }
 
+    @GetMapping("/ListarPorId")
+    public Medico listarMedicoPorId (@RequestParam Integer idMedico) {
+        return medicoService.listarMedicoPorId(idMedico);
+    }
+
     @DeleteMapping("/Deletar")
     public ResponseEntity<String> deletarMedico (@RequestParam Integer idMedico) {
         medicoService.deletarMedico(idMedico);

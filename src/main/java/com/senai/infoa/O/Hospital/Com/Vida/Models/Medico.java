@@ -2,6 +2,8 @@ package com.senai.infoa.O.Hospital.Com.Vida.Models;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,6 +43,7 @@ public class Medico {
     private String turnoMedico;
 
     @OneToOne (mappedBy="medico",cascade=CascadeType.ALL)
+    @JsonIgnore
     private Agendamento agendamento;
 
     private Boolean ativo = true;

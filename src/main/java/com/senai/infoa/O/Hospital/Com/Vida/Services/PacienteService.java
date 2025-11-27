@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.senai.infoa.O.Hospital.Com.Vida.Models.Paciente;
 import com.senai.infoa.O.Hospital.Com.Vida.Respositories.PacienteRespository;
 
@@ -23,6 +24,10 @@ public class PacienteService {
 
     public List<Paciente> listarTodosPaciente () {
         return pacienteRespository.findAll();
+    }
+
+    public Paciente listarPacientePorId (Integer idPaciente) {
+        return pacienteRespository.findById(idPaciente).orElseThrow(()-> new RuntimeException("Não existe esse Paciente"));
     }
 
     public void deletarPaciente (Integer idPaciente) {

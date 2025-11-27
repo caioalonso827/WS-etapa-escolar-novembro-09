@@ -41,6 +41,8 @@ public class Agendamento {
 
     private Boolean ativo = true;
 
+
+    
     public Agendamento() {
     }
 
