@@ -1,7 +1,7 @@
 FROM eclipse-temurin:23-jdk AS build
 WORKDIR /app
 
-RUN apt-get uptade && \
+RUN apt-get update && \
     apt - get install -y wget unzip && \
     wget https://archive.apache.org/dist/maven/maven-3/3.9.8/binaries/apache-maven-3.9.8-bin.zip && \
     unzip apache-maven-3.9.8-bin.zip -d /opt && \
