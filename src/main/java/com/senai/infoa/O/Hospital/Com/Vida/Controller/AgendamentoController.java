@@ -26,7 +26,6 @@ public class AgendamentoController {
    private AgendamentoService agendamentoService;
 
 
-   
     @PostMapping("/Cadastrar")
     public ResponseEntity<Void> cadastrarAgendamento (@RequestBody Agendamento agendamento) {
 
