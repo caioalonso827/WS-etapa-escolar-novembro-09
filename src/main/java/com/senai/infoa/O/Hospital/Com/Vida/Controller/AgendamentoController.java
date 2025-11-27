@@ -26,13 +26,11 @@ public class AgendamentoController {
    private AgendamentoService agendamentoService;
    
     @PostMapping("/Cadastrar")
-    public ResponseEntity<String> cadastrarAgendamento (@RequestBody Agendamento agendamento) {
-
+    public Agendamento cadastrarAgendamento (@RequestBody Agendamento agendamento) {
 
         Tratamento tratamento = new Tratamento();
         tratamento.setIdTratamento(agendamento.getTratamento().getIdTratamento());
         agendamento.setTratamento(tratamento);
-        
         //Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
         Medico medico = new Medico();
@@ -44,10 +42,7 @@ public class AgendamentoController {
         agendamento.setPaciente(paciente);
         //Só precisa colocar o id, que já puxa as informaçoes(ERRO AQUI)
 
-        
-
-        agendamentoService.cadastrarAgendamento(agendamento);
-        return ResponseEntity.ok("Agendamento Feito!!");
+        return agendamentoService.cadastrarAgendamento(agendamento);
     }
 
     @GetMapping("/ListarAgendamentosDoPaciente")
